@@ -34,7 +34,6 @@
                 @foreach ($categories as $category)
                     <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
                 @endforeach
-                <option value="">カテゴリ</option>
             </select>
         </div>
         <div class="create-form__button">
@@ -49,7 +48,6 @@
         <div class="search-form__item">
             <input type="text" class="search-form__item-input" name="keyword" value="{{ old('keyword') }}">
             <select class="search-form__item-select" name="category_id">
-                <option value="">カテゴリ</option>
                 @foreach ($categories as $category)
                 <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
                 @endforeach
@@ -74,11 +72,11 @@
                         @method('PATCH')
                         @csrf
                         <div class="update-form__item">
-                            <input type="text" class="update-form__item-input" name="content" value="{{ $todo['content'] }}">
+                            <input class="update-form__item-input" type="text" name="content" value="{{ $todo['content'] }}">
                             <input type="hidden" name="id" value="{{ $todo['id'] }}">
-                        </div>
-                        <div class="update-form__item">
-                            <p class="update-form__item-p">{{ $todo['category']['name'] }}</p>
+                            <select class="update-form__item-select" name="todo_id">
+                            <option value="{{ $todo['id'] }}">{{ $todo['content'] }}</option>
+                            </select>
                         </div>
                         <div class="update-form__button">
                             <button class="update-form__button-submit" type="submit">更新</button>
